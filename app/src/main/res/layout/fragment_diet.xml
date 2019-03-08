@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DietFragment" android:orientation="vertical">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:src="@tools:sample/avatars[0]"
+            android:id="@+id/dietpic"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/todo"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/diet_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/diet"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
+        <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider"
+                android:layout_weight="1"/>
+        <Button
+                android:text="@string/modify_diet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/button"
+                android:layout_gravity="end"
+                style="@style/FirebaseUI.Button"/>
+    </LinearLayout>
+    <TextView
+            android:text="@string/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/descript"/>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/scroll">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical" android:id="@+id/scroll_lin">
+            <TextView
+                    android:text="@string/suggestions"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp" android:id="@+id/textView_other_diets"
+                    android:layout_weight="1"
+                    android:textAppearance="@android:style/TextAppearance.Material.Body1"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
