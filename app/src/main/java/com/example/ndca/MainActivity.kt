@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
+@Suppress("UNUSED_EXPRESSION")
 class MainActivity : AppCompatActivity() {
 
 
