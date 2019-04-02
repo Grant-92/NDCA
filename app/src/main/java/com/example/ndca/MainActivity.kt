@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.rel_layout, fragment)

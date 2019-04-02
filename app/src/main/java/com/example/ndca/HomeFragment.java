@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         Rings rings = view.findViewById(R.id.rings);
 
         // Inflate the layout for this fragment
@@ -29,8 +29,6 @@ public class HomeFragment extends Fragment {
         return view;
 
     }
-
-
 
 
 }

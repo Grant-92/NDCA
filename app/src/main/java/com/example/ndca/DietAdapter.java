@@ -17,7 +17,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
     private ArrayList<DietModel> mList;
 
 
-    DietAdapter (Context context, ArrayList<DietModel> list){
+    DietAdapter(Context context, ArrayList<DietModel> list) {
         mContext = context;
         mList = list;
     }
@@ -55,14 +55,11 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-
-
         return mList.size();
     }
 
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView item_image;
         TextView item_header, item_descript;

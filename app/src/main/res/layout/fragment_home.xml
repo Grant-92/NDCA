@@ -31,7 +31,6 @@
             app:rings_text_size="20sp"
             app:rings_unfinished_color="#f2f2f2"
             android:layout_gravity="center_horizontal"
-
     />
 
 </FrameLayout>

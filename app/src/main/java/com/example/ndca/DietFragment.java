@@ -29,11 +29,10 @@ public class DietFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ArrayList<DietModel> dietList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
 
     }
@@ -43,7 +42,7 @@ public class DietFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         //Declare an instance of View
-        View v =  inflater.inflate(R.layout.fragment_diet, container, false);
+        View v = inflater.inflate(R.layout.fragment_diet, container, false);
 
         //FireBase Storage instance
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -73,7 +72,6 @@ public class DietFragment extends Fragment {
         recyclerView.setLayoutManager(rvLiLayoutManager);
 
 
-
         dietList = new ArrayList<>();
 
 
@@ -101,12 +99,12 @@ public class DietFragment extends Fragment {
                                 b5.setText(document.get("b5").toString());
 
 
-
                                 //TODO  retreive pics
                                 DietModel fillerData = new DietModel(R.drawable.placeholder, document.get("Name").toString(), document.get("Des").toString());
                                 dietList.add(fillerData);
                                 DietAdapter dietAdapter = new DietAdapter(getActivity(), dietList);
-                                recyclerView.setAdapter(dietAdapter);}
+                                recyclerView.setAdapter(dietAdapter);
+                            }
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
                         }
@@ -116,21 +114,12 @@ public class DietFragment extends Fragment {
         recyclerView.setAdapter(dietAdapter);
 
 
-
-
-
         //recyclerView.setAdapter(dietAdapter);
-
-
 
 
         // Inflate the layout for this fragment
         return v;
     }
-
-
-
-
 
 
 }
