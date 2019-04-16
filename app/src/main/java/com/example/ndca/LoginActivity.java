@@ -26,14 +26,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         mAuth = FirebaseAuth.getInstance();
-
         mEmail = findViewById(R.id.email_edit_text);
         mPassword = findViewById(R.id.pass_edit_text);
-
         logIn = findViewById(R.id.sign_in_btn);
-        signUp = findViewById(R.id.reg_btn);
+        signUp = findViewById(R.id.register);
 
 
     }
@@ -41,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onStart() {
         super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         //TODO check if user is signed in and act accordingly
     }
 
@@ -61,12 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("TAG", "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-
-                                //TODO might be better  to pass another value over UID
-                                String id = user.getUid();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                //TODO retreive UID in HomeFragment
-                                intent.putExtra("id", id);
                                 startActivity(intent);
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -81,7 +74,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
 
 
-        } else if (v.getId() == R.id.reg_btn) {
+        } else if (v.getId() == R.id.register) {
+            Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+            startActivity(intent);
 
         }
     }

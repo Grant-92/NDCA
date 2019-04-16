@@ -13,19 +13,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class DietFragment extends Fragment {
 
-    private FirebaseFirestore db;
-    private StorageReference mStorageRef;
+    private FirebaseAuth mAuth;
+
+
 
     private RecyclerView recyclerView;
     private ArrayList<DietModel> dietList;
@@ -33,21 +38,26 @@ public class DietFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         //Declare an instance of View
         View v = inflater.inflate(R.layout.fragment_diet, container, false);
-
         //FireBase Storage instance
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
         //Firestore instance
-        db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         //Getting RecyclerView
         recyclerView = v.findViewById(R.id.rv);
 
@@ -85,22 +95,23 @@ public class DietFragment extends Fragment {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
 
 
+                                //TODO determine what diet user is on and fill with data from said diet
                                 //Setting text
-                                g1.setText(document.get("g1").toString());
-                                g2.setText(document.get("g2").toString());
-                                g3.setText(document.get("g3").toString());
-                                g4.setText(document.get("g4").toString());
-                                g5.setText(document.get("g5").toString());
+                                g1.setText(Objects.requireNonNull(document.get("g1")).toString());
+                                g2.setText(Objects.requireNonNull(document.get("g2")).toString());
+                                g3.setText(Objects.requireNonNull(document.get("g3")).toString());
+                                g4.setText(Objects.requireNonNull(document.get("g4")).toString());
+                                g5.setText(Objects.requireNonNull(document.get("g5")).toString());
 
-                                b1.setText(document.get("b1").toString());
-                                b2.setText(document.get("b2").toString());
-                                b3.setText(document.get("b3").toString());
-                                b4.setText(document.get("b4").toString());
-                                b5.setText(document.get("b5").toString());
+                                b1.setText(Objects.requireNonNull(document.get("b1")).toString());
+                                b2.setText(Objects.requireNonNull(document.get("b2")).toString());
+                                b3.setText(Objects.requireNonNull(document.get("b3")).toString());
+                                b4.setText(Objects.requireNonNull(document.get("b4")).toString());
+                                b5.setText(Objects.requireNonNull(document.get("b5")).toString());
 
 
                                 //TODO  retreive pics
-                                DietModel fillerData = new DietModel(R.drawable.placeholder, document.get("Name").toString(), document.get("Des").toString());
+                                DietModel fillerData = new DietModel(R.drawable.placeholder, Objects.requireNonNull(document.get("Name")).toString(), Objects.requireNonNull(document.get("Des")).toString());
                                 dietList.add(fillerData);
                                 DietAdapter dietAdapter = new DietAdapter(getActivity(), dietList);
                                 recyclerView.setAdapter(dietAdapter);
@@ -112,14 +123,6 @@ public class DietFragment extends Fragment {
                 });
         DietAdapter dietAdapter = new DietAdapter(getActivity(), dietList);
         recyclerView.setAdapter(dietAdapter);
-
-
-        //recyclerView.setAdapter(dietAdapter);
-
-
-        // Inflate the layout for this fragment
         return v;
     }
-
-
 }
