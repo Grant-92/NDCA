@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (v.getId() == R.id.sign_in_btn) {
 
-            String email = mEmail.getText().toString();
+            final String email = mEmail.getText().toString();
             String password = mPassword.getText().toString();
 
 
@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Log.d("TAG", "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.putExtra("email", email);
                                 startActivity(intent);
                             } else {
                                 // If sign in fails, display a message to the user.

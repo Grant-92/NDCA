@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(DietFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
+                R.id.action_cam -> {
+                    replaceFragment(CameraFragment())//TODO
+                    return@setOnNavigationItemSelectedListener true
+                }
                 R.id.action_settings -> {
                     replaceFragment(SettingsFragment())
                     return@setOnNavigationItemSelectedListener true

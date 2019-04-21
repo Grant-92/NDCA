@@ -3,34 +3,51 @@
              xmlns:tools="http://schemas.android.com/tools"
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent" android:layout_height="match_parent"
-             tools:context=".HomeFragment">
+             tools:context=".HomeFragment" android:id="@+id/frameLayout_home"
+             android:paddingBottom="50dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
 
-    <com.lalongooo.Rings
-            android:id="@+id/rings"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            app:rings_inner_first_color="#FF9F1C"
-            app:rings_inner_first_progress="30"
-            app:rings_inner_first_text="Java"
-            app:rings_inner_second_color="#4BC6B9"
-            app:rings_inner_second_progress="75"
-            app:rings_inner_second_text="Kotlin"
-            app:rings_inner_third_color="#757780"
-            app:rings_inner_third_progress="85"
-            app:rings_inner_third_text="Android"
-            app:rings_overall_color="#EA3546"
-            app:rings_overall_progress="100"
-            app:rings_overall_text="Overall"
-            app:rings_text_size="20sp"
-            app:rings_unfinished_color="#f2f2f2"
-            android:layout_gravity="center_horizontal"
-    />
+        <com.lalongooo.Rings
+                android:id="@+id/rings"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                app:rings_inner_first_color="#FF9F1C"
+                app:rings_inner_first_progress="30"
+                app:rings_inner_first_text="Test"
+                app:rings_inner_second_color="#4BC6B9"
+                app:rings_inner_second_progress="75"
+                app:rings_inner_second_text="Test"
+                app:rings_inner_third_color="#757780"
+                app:rings_inner_third_progress="85"
+                app:rings_inner_third_text="Test"
+                app:rings_overall_color="#EA3546"
+                app:rings_overall_progress="100"
+                app:rings_overall_text="OverallTest"
+                app:rings_text_size="20sp"
+                app:rings_unfinished_color="#f2f2f2"
+                android:layout_gravity="center_horizontal|top"
+
+                app:layout_constraintEnd_toEndOf="@+id/diet_header_diet"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/diet_header_diet"
+                app:layout_constraintStart_toStartOf="@+id/diet_header_diet"/>
+        <TextView
+                android:text="@string/your_diet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/diet_header_diet" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:textSize="36sp"
+                android:textAlignment="center" android:textStyle="bold"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

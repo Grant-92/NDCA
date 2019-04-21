@@ -12,7 +12,12 @@
             android:icon="@drawable/ic_diet_white"
     />
     <item
-            android:title="@string/settings"
+            android:title="Camera"
+            android:id="@+id/action_cam"
+            android:icon="@drawable/ic_cam_white"
+    />
+    <item
+            android:title="Settings"
             android:id="@+id/action_settings"
             android:icon="@drawable/ic_settings_white"
     />

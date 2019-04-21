@@ -51,6 +51,8 @@ public class DietFragment extends Fragment {
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        String extraEmail = getActivity().getIntent().getStringExtra("email"); //TODO Use to get user data because FBUser is broke
+
 
         //Declare an instance of View
         View v = inflater.inflate(R.layout.fragment_diet, container, false);
