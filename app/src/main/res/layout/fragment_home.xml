@@ -9,42 +9,59 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+
+    >
 
         <com.lalongooo.Rings
                 android:id="@+id/rings"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 app:rings_inner_first_color="#FF9F1C"
-                app:rings_inner_first_progress="30"
-                app:rings_inner_first_text="Test"
+                app:rings_inner_first_progress="0"
+                app:rings_inner_first_text="intake goal 1"
                 app:rings_inner_second_color="#4BC6B9"
-                app:rings_inner_second_progress="75"
-                app:rings_inner_second_text="Test"
+                app:rings_inner_second_progress="20"
+                app:rings_inner_second_text="intake goal 2"
                 app:rings_inner_third_color="#757780"
-                app:rings_inner_third_progress="85"
-                app:rings_inner_third_text="Test"
+                app:rings_inner_third_progress="80"
+                app:rings_inner_third_text="intake goal 3"
                 app:rings_overall_color="#EA3546"
                 app:rings_overall_progress="100"
-                app:rings_overall_text="OverallTest"
+                app:rings_overall_text="Overall intake goal percentage"
                 app:rings_text_size="20sp"
                 app:rings_unfinished_color="#f2f2f2"
                 android:layout_gravity="center_horizontal|top"
 
-                app:layout_constraintEnd_toEndOf="@+id/diet_header_diet"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/diet_header_diet"
-                app:layout_constraintStart_toStartOf="@+id/diet_header_diet"/>
+                app:layout_constraintBottom_toTopOf="@+id/textView2" android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/diet_header_diet"/>
         <TextView
                 android:text="@string/your_diet"
-                android:layout_width="0dp"
+                android:layout_width="395dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/diet_header_diet" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:textSize="36sp"
-                android:textAlignment="center" android:textStyle="bold"/>
+                android:id="@+id/diet_header_diet"
+                android:textSize="36sp"
+                android:textAlignment="center" android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/rings"/>
+        <TextView
+                android:text="Scrollable menu ffor other diets will go in this section here"
+                android:layout_width="350dp"
+                android:layout_height="178dp"
+                android:id="@+id/textView2"
+                android:textAlignment="center" android:textSize="36sp" android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/rings"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

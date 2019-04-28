@@ -35,11 +35,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private ArrayList<String> adapterArrayList;
     private String diet = "Error";
 
+
     public static boolean isEmailValid(String email) {
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     //TODO redo diet select or hardcode cause i cannot get it working F the spinner that wont give a selected item even when everything looks too be good
@@ -48,18 +56,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        db = FirebaseFirestore.getInstance();
 
-        //TODO come baack and get spinner working corrrectly
-        //spnSetUp();
+
+        spnSetUp();
         instantiateObjects();
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
     }
 
     @Override
@@ -91,6 +92,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 user.put("Name", sName);
                                 user.put("Email", sEmail);
                                 user.put("diet", diet);
+                                user.put("ValueToday1", "0");
+                                user.put("ValueToday2", "0");
+                                user.put("ValueToday3", "0");
+
                                 db.collection("Users").document(sEmail)
                                         .set(user)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -132,14 +137,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        String selectedItem = parent.getItemAtPosition(position).toString();
-        diet = selectedItem;
-        Toast.makeText(parent.getContext(), selectedItem + "was selected", Toast.LENGTH_SHORT).show();
-    }
-
 
     //TODO spinner is never set ????
 
@@ -163,7 +160,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
                                 adapterArrayList.add(document.getId());
-                                Toast.makeText(getApplicationContext(), document.getId(), Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
@@ -185,7 +181,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        spnSetUp();
         ArrayAdapter<?> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -194,5 +189,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(this);
+    }
+
+    @Override //TODO this never gets called or some reason
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+        String selectedItem = parent.getItemAtPosition(position).toString();
+        diet = selectedItem;
+        Toast.makeText(parent.getContext(), view.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(parent.getContext(), selectedItem + "was selected", Toast.LENGTH_SHORT).show();
     }
 }

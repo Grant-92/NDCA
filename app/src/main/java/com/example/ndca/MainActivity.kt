@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_cam -> {
-                    replaceFragment(CameraFragment())//TODO
+                    replaceFragment(CameraFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_settings -> {
